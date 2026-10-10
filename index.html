@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hemaprabha A | ECE Student Portfolio</title>
+<meta name="description" content="Portfolio of Hemaprabha A, second-year Electronics and Communication Engineering student at M. Kumarasamy College of Engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#050818; --navy-2:#0d1230; --red:#c8161d; --red-dark:#a10f15;
+    --ink:#111322; --muted:#5a5f73; --line:#e6e7ee; --bg:#ffffff; --soft:#f6f6fa;
+    --sidebar-w:320px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  :focus-visible{outline:3px solid var(--red);outline-offset:3px}
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    position:fixed;inset:0 auto 0 0;width:var(--sidebar-w);background:var(--navy);color:#fff;
+    padding:36px 28px;overflow-y:auto;z-index:20;
+  }
+  .photo{
+    width:180px;height:180px;margin:0 auto 32px;border-radius:50%;border:5px solid var(--red);
+    background:#fff;overflow:hidden;display:grid;place-items:center;
+  }
+  .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .photo .initials{font-size:54px;font-weight:700;color:var(--navy);letter-spacing:2px}
+  .side-title{
+    color:var(--red);font-weight:600;font-size:1.15rem;text-transform:uppercase;
+    margin:28px 0 14px;letter-spacing:.5px;
+  }
+  .contact li{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;font-size:.82rem}
+  .contact svg{width:20px;height:20px;fill:var(--red);flex:none;margin-top:3px}
+  .contact small{display:block;color:#aeb2c8;font-size:.72rem}
+  .contact a:hover{color:#ff6b70}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    font-size:.78rem;padding:6px 12px;border-radius:999px;background:var(--navy-2);
+    border:1px solid #232a55;color:#e8e9f3;
+  }
+  .nav a{
+    display:block;padding:7px 0;font-size:.88rem;text-transform:uppercase;letter-spacing:.8px;
+    color:#d6d8e8;border-bottom:1px solid #151a3d;transition:.2s;
+  }
+  .nav a:hover,.nav a.active{color:#fff;padding-left:8px;border-color:var(--red)}
+  .note{font-size:.72rem;color:#8a8fae;margin-top:22px}
+
+  /* ---------- Main ---------- */
+  main{margin-left:var(--sidebar-w);padding:0 64px 40px;max-width:1100px}
+  section{padding:64px 0 24px}
+  .hero{padding-top:72px}
+  .hello{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;color:var(--red);line-height:1.15}
+  .name{font-size:clamp(2.2rem,5.2vw,3.8rem);font-weight:700;color:var(--navy);line-height:1.1}
+  .name span{color:var(--red)}
+  .role{margin-top:10px;color:var(--red);text-transform:uppercase;font-weight:500;letter-spacing:1px;font-size:1rem}
+  .hero p.lead{margin-top:22px;max-width:62ch;color:var(--muted)}
+  .btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+  .btn{
+    display:inline-block;padding:12px 26px;border-radius:6px;font-weight:600;font-size:.92rem;
+    border:2px solid var(--red);cursor:pointer;transition:.2s;font-family:inherit;
+  }
+  .btn.primary{background:var(--red);color:#fff}
+  .btn.primary:hover{background:var(--red-dark);border-color:var(--red-dark)}
+  .btn.ghost{background:transparent;color:var(--red)}
+  .btn.ghost:hover{background:var(--red);color:#fff}
+
+  .sec-head{display:flex;align-items:center;gap:18px;margin-bottom:26px}
+  .sec-head h2{
+    color:var(--red);font-size:1.35rem;font-weight:600;text-transform:uppercase;white-space:nowrap;letter-spacing:.5px;
+  }
+  .sec-head::after{content:"";flex:1;height:3px;background:var(--navy);border-radius:2px}
+  .sec-head svg{width:26px;height:26px;fill:var(--red)}
+
+  .about p{color:var(--muted);max-width:75ch}
+  .highlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px}
+  .hl{background:var(--soft);border-left:4px solid var(--red);padding:14px 16px;border-radius:6px}
+  .hl strong{display:block;font-size:1.5rem;color:var(--navy);line-height:1.2}
+  .hl span{font-size:.8rem;color:var(--muted)}
+
+  /* timeline */
+  .timeline{position:relative;padding-left:0}
+  .t-item{display:grid;grid-template-columns:170px 1fr;gap:0 30px;position:relative;padding-bottom:30px}
+  .t-item::before{content:"";position:absolute;left:200px;top:8px;bottom:-8px;width:2px;background:var(--navy)}
+  .t-item:last-child::before{bottom:auto;height:20px}
+  .t-item::after{
+    content:"";position:absolute;left:194px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--navy);
+    box-shadow:0 0 0 4px #fff;
+  }
+  .t-label{text-align:right;font-weight:500;font-size:.88rem;text-transform:uppercase;color:var(--ink)}
+  .t-body{padding-left:30px}
+  .t-body h3{font-size:.95rem;text-transform:uppercase;color:var(--navy)}
+  .t-body p,.t-body li{font-size:.9rem;color:var(--muted)}
+  .t-body ul{margin-top:4px}
+  .scores{display:flex;gap:14px;margin-top:10px;flex-wrap:wrap}
+  .score{background:var(--navy);color:#fff;border-radius:8px;padding:10px 20px;text-align:center}
+  .score b{display:block;font-size:1.4rem;color:#ff7a7f;line-height:1.2}
+  .score small{font-size:.72rem;letter-spacing:.5px;text-transform:uppercase}
+
+  /* projects */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+  .card{
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;
+    transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(5,8,24,.12)}
+  .card-top{background:var(--navy);padding:26px;display:grid;place-items:center;height:130px}
+  .card-top svg{width:62px;height:62px;stroke:var(--red);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .card-body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card-body h3{font-size:1.05rem;color:var(--navy)}
+  .card-body p{font-size:.88rem;color:var(--muted);flex:1}
+  .tags{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{font-size:.72rem;padding:3px 11px;border-radius:999px;background:#fdecec;color:var(--red-dark);font-weight:500}
+
+  /* achievements */
+  .awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+  .award{border-top:4px solid var(--red);background:var(--soft);padding:18px 20px;border-radius:0 0 10px 10px}
+  .award h3{font-size:.95rem;text-transform:uppercase;color:var(--navy)}
+  .award small{color:var(--red);font-weight:500}
+  .award p{font-size:.85rem;color:var(--muted);margin-top:4px}
+
+  .interests{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 30px}
+  .interests li{padding-left:22px;position:relative;color:var(--muted);font-size:.92rem}
+  .interests li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:9px;background:var(--red);border-radius:50%}
+  .goal{margin-top:22px;background:var(--navy);color:#e8e9f3;border-radius:12px;padding:22px 26px;font-size:.92rem}
+  .goal b{color:#ff7a7f}
+
+  footer{
+    margin-left:var(--sidebar-w);background:var(--navy);color:#cfd2e6;text-align:center;
+    padding:22px 20px;font-size:.85rem;
+  }
+  footer span{color:#ff7a7f}
+  #top{
+    position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
+    background:var(--red);color:#fff;font-size:1.2rem;display:none;z-index:30;box-shadow:0 6px 18px rgba(0,0,0,.25);
+  }
+  #top.show{display:block}
+  #top:hover{background:var(--red-dark)}
+
+  /* modal */
+  .modal{position:fixed;inset:0;background:rgba(5,8,24,.7);display:none;place-items:center;z-index:50;padding:20px}
+  .modal.open{display:grid}
+  .modal-box{background:#fff;max-width:560px;width:100%;border-radius:14px;padding:30px;position:relative;border-top:6px solid var(--red)}
+  .modal-box h3{color:var(--navy);margin-bottom:6px}
+  .modal-box dl{margin-top:14px}
+  .modal-box dt{font-weight:600;color:var(--red);font-size:.8rem;text-transform:uppercase;margin-top:12px}
+  .modal-box dd{color:var(--muted);font-size:.92rem}
+  .close{position:absolute;right:14px;top:10px;background:none;border:none;font-size:1.8rem;cursor:pointer;color:var(--navy)}
+
+  .menu-btn{display:none}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:980px){
+    .sidebar{position:relative;width:100%;inset:auto;padding:30px 24px}
+    main,footer{margin-left:0}
+    main{padding:0 24px 30px}
+    .nav{display:none}
+    .t-item{grid-template-columns:1fr;gap:4px}
+    .t-item::before,.t-item::after{left:3px}
+    .t-item::after{left:-4px}
+    .t-item::before{left:2px}
+    .t-label{text-align:left;padding-left:30px}
+    .t-body{padding-left:30px}
+    .sidebar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 30px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar">
+  <div class="photo">
+    <!-- REPLACE: put your photo file name in src (e.g. "hemaprabha.jpg") and delete the initials span -->
+    <img src="" alt="Portrait of Hemaprabha A" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span class="initials" style="display:none">HA</span>
+  </div>
+
+  <div class="sidebar-grid">
+    <div>
+      <h2 class="side-title" style="margin-top:0">Contact</h2>
+      <ul class="contact">
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M2 5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5zm2.4 0L12 11.2 19.6 5H4.4zM20 7.3l-8 6.5-8-6.5V19h16V7.3z"/></svg>
+          <div><small>Email</small><a href="mailto:your-email@example.com" id="email">your-email@example.com</a></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3V9.5zm7 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4V9.5z"/></svg>
+          <div><small>LinkedIn</small><a href="#" id="linkedin">Add your LinkedIn link</a></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.4c.58.1.8-.25.8-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.82 1.19 3.08 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+          <div><small>GitHub</small><a href="#" id="github">Add your GitHub link</a></div>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="side-title">Learning Areas</h2>
+      <div class="chips">
+        <span class="chip">Python</span>
+        <span class="chip">Java</span>
+        <span class="chip">Data Structures</span>
+        <span class="chip">ECE Fundamentals</span>
+        <span class="chip">Problem-Solving</span>
+        <span class="chip">Logical Thinking</span>
+        <span class="chip">Project Development</span>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="side-title">Interests</h2>
+      <div class="chips">
+        <span class="chip">Programming</span>
+        <span class="chip">Electronics</span>
+        <span class="chip">Embedded Systems</span>
+        <span class="chip">Emerging Tech</span>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <h2 class="side-title">Menu</h2>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#goals">Goals</a>
+  </nav>
+  <p class="note">Learning areas, not expert ratings.</p>
+</aside>
+
+<!-- ============ MAIN ============ -->
+<main>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hello">Hello... I'm</div>
+    <h1 class="name">Hemaprabha <span>A</span></h1>
+    <p class="role">Electronics &amp; Communication Engineering Student</p>
+    <p class="lead">I'm currently pursuing my second year in Electronics and Communication Engineering at M. Kumarasamy College of Engineering. I enjoy learning new technologies, exploring programming concepts, and developing practical projects that solve real-world problems.</p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">Explore My Projects</a>
+      <a class="btn ghost" href="#contact-info" onclick="document.querySelector('.contact').scrollIntoView({behavior:'smooth'});return false;">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="sec-head"><h2>About Me</h2></div>
+    <p>My name is Hemaprabha A, and I am currently pursuing my second year of Electronics and Communication Engineering at M. Kumarasamy College of Engineering. I completed my schooling at Government Girls Higher Secondary School, Aundipatti, Theni. I scored 87% in both my 10th and 12th standard examinations. I also cleared the government TRUST examination in 9th standard for scholarship eligibility. I am interested in developing my technical knowledge through programming, engineering projects, and continuous learning. My goal is to improve my technical and problem-solving skills and apply them to practical engineering challenges.</p>
+    <div class="highlights">
+      <div class="hl"><strong>2nd Year</strong><span>B.E. ECE</span></div>
+      <div class="hl"><strong>87%</strong><span>Class 10 &amp; Class 12</span></div>
+      <div class="hl"><strong>2</strong><span>College Projects</span></div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="sec-head">
+      <svg viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6 9.2v4L12 20l6-3.8v-4L12 15.5 6 12.2z"/></svg>
+      <h2>Education</h2>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-label">Bachelor of Engineering<br>(Present)</div>
+        <div class="t-body">
+          <h3>M. Kumarasamy College of Engineering</h3>
+          <ul>
+            <li>Department: Electronics and Communication Engineering (ECE)</li>
+            <li>Current Year: Second Year</li>
+            <li>Status: Currently Pursuing</li>
+          </ul>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-label">Higher Secondary<br>&amp; Secondary</div>
+        <div class="t-body">
+          <h3>Government Girls Higher Secondary School, Aundipatti, Theni</h3>
+          <div class="scores">
+            <div class="score"><b>87%</b><small>Class 12</small></div>
+            <div class="score"><b>87%</b><small>Class 10</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sec-head">
+      <svg viewBox="0 0 24 24"><path d="M20 6h-4V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm-10-2h4v2h-4V4z"/></svg>
+      <h2>My Projects</h2>
+    </div>
+    <div class="cards" id="project-cards"></div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <div class="sec-head">
+      <svg viewBox="0 0 24 24"><path d="M12 2a6 6 0 0 0-3 11.2V22l3-2 3 2v-8.8A6 6 0 0 0 12 2zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/></svg>
+      <h2>Achievements &amp; Academic Highlights</h2>
+    </div>
+    <div class="awards">
+      <div class="award"><h3>Class 12 – 87%</h3><small>Government Girls HSS, Aundipatti</small><p>Scored 87% in the Class 12 examination.</p></div>
+      <div class="award"><h3>Class 10 – 87%</h3><small>Government Girls HSS, Aundipatti</small><p>Scored 87% in the Class 10 examination.</p></div>
+      <div class="award"><h3>TRUST Examination</h3><small>Class 9 – Government</small><p>Cleared the government TRUST examination for scholarship eligibility.</p></div>
+    </div>
+  </section>
+
+  <!-- INTERESTS & GOALS -->
+  <section id="goals">
+    <div class="sec-head"><h2>Interests &amp; Career Goals</h2></div>
+    <ul class="interests">
+      <li>Programming and software development</li>
+      <li>Electronics and embedded systems</li>
+      <li>Engineering problem-solving</li>
+      <li>Building practical academic projects</li>
+      <li>Learning emerging technologies</li>
+    </ul>
+    <div class="goal"><b>Career objective:</b> To strengthen my technical knowledge, gain practical experience, participate in engineering projects, and prepare for future internship and career opportunities.</div>
+  </section>
+</main>
+
+<footer>Designed with passion by <span>Hemaprabha A</span> | Aspiring Engineer &nbsp;·&nbsp; © <span id="year"></span></footer>
+<button id="top" aria-label="Back to top">↑</button>
+
+<!-- Project modal -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
+  <div class="modal-box">
+    <button class="close" aria-label="Close details" id="m-close">&times;</button>
+    <h3 id="m-title"></h3>
+    <div class="tags" id="m-tags"></div>
+    <dl id="m-body"></dl>
+  </div>
+</div>
+
+<script>
+/* ===== EDIT YOUR CONTENT HERE ===== */
+const CONFIG = {
+  email: "",      // e.g. "name@gmail.com"
+  linkedin: "",   // e.g. "https://www.linkedin.com/in/your-id"
+  github: ""      // e.g. "https://github.com/your-id"
+};
+
+const PROJECTS = [
+  {
+    title: "College Bus Seat Management System",
+    domain: "Data Structures",
+    tags: ["Data Structures"],
+    short: "A college-level project to manage bus seat allocation and related seat information in an organized manner using data structure concepts.",
+    objective: "To understand how data structures can be applied to practical seat management problems.",
+    technology: "Data Structures",
+    icon: '<rect x="3" y="5" width="18" height="11" rx="2"/><path d="M3 11h18M7 16v2M17 16v2"/><circle cx="7.5" cy="13.5" r=".6"/><circle cx="16.5" cy="13.5" r=".6"/>'
+  },
+  {
+    title: "Railway Announcement System",
+    domain: "Python Programming",
+    tags: ["Python"],
+    short: "A Python-based college project designed around railway announcements, showing how programming can organize and present railway-related announcement information.",
+    objective: "To apply Python programming concepts to a practical railway announcement use case.",
+    technology: "Python",
+    icon: '<rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 11h12M9 21l2-4M15 21l-2-4"/><circle cx="9.5" cy="14" r=".6"/><circle cx="14.5" cy="14" r=".6"/>'
+  }
+];
+/* ================================== */
+
+// Contact links
+(function(){
+  const e = document.getElementById('email'), l = document.getElementById('linkedin'), g = document.getElementById('github');
+  if(CONFIG.email){ e.textContent = CONFIG.email; e.href = "mailto:" + CONFIG.email; }
+  if(CONFIG.linkedin){ l.textContent = "LinkedIn Profile"; l.href = CONFIG.linkedin; l.target = "_blank"; l.rel = "noopener"; }
+  if(CONFIG.github){ g.textContent = "GitHub Profile"; g.href = CONFIG.github; g.target = "_blank"; g.rel = "noopener"; }
+  [l,g].forEach(a => { if(a.getAttribute('href') === '#') a.addEventListener('click', ev => ev.preventDefault()); });
+})();
+
+// Project cards
+const wrap = document.getElementById('project-cards');
+PROJECTS.forEach((p, i) => {
+  const el = document.createElement('article');
+  el.className = 'card';
+  el.innerHTML = `
+    <div class="card-top"><svg viewBox="0 0 24 24" aria-hidden="true">${p.icon}</svg></div>
+    <div class="card-body">
+      <h3></h3>
+      <div class="tags"></div>
+      <p></p>
+      <button class="btn primary" data-i="${i}">View Details</button>
+    </div>`;
+  el.querySelector('h3').textContent = p.title;
+  el.querySelector('p').textContent = p.short;
+  p.tags.forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.textContent = t; el.querySelector('.tags').appendChild(s); });
+  wrap.appendChild(el);
+});
+
+// Modal
+const modal = document.getElementById('modal');
+let lastFocus = null;
+function openModal(i){
+  const p = PROJECTS[i];
+  lastFocus = document.activeElement;
+  document.getElementById('m-title').textContent = p.title;
+  const tags = document.getElementById('m-tags'); tags.innerHTML = '';
+  p.tags.forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.textContent = t; tags.appendChild(s); });
+  const body = document.getElementById('m-body'); body.innerHTML = '';
+  [['Domain', p.domain], ['Description', p.short], ['Objective', p.objective], ['Technology', p.technology]].forEach(([k, v]) => {
+    const dt = document.createElement('dt'); dt.textContent = k;
+    const dd = document.createElement('dd'); dd.textContent = v;
+    body.append(dt, dd);
+  });
+  modal.classList.add('open');
+  document.getElementById('m-close').focus();
+}
+function closeModal(){ modal.classList.remove('open'); if(lastFocus) lastFocus.focus(); }
+wrap.addEventListener('click', e => { const b = e.target.closest('button[data-i]'); if(b) openModal(+b.dataset.i); });
+document.getElementById('m-close').addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+// Back to top + active nav
+const topBtn = document.getElementById('top');
+topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+const links = [...document.querySelectorAll('.nav a')];
+const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+window.addEventListener('scroll', () => {
+  topBtn.classList.toggle('show', window.scrollY > 400);
+  let cur = 0;
+  secs.forEach((s, i) => { if(s.getBoundingClientRect().top < 160) cur = i; });
+  links.forEach((a, i) => a.classList.toggle('active', i === cur));
+}, {passive:true});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
